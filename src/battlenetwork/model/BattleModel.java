@@ -14,8 +14,9 @@ public class BattleModel {
 		entities = new ArrayList<Entity>();
 		
 		//TODO Remove test
-		addEntity(new Navi(new Position(32,32)));
+		addEntity(new Navi(new Position(0,0)));
 		addEntity(new Enemy(new Position(128,128)));
+		addEntity(new Panel(new Position(256,256)));
 		
 	}
 	

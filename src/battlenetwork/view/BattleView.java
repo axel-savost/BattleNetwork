@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -14,7 +15,10 @@ import org.newdawn.slick.state.StateBasedGame;
 import battlenetwork.controller.BattleController;
 import battlenetwork.model.BattleModel;
 import battlenetwork.model.Constants;
+import battlenetwork.model.Enemy;
 import battlenetwork.model.Entity;
+import battlenetwork.model.Navi;
+import battlenetwork.model.Panel;
 
 public class BattleView {
 	
@@ -44,10 +48,23 @@ public class BattleView {
 	
 	public void assignSprite(Entity e){
 		Image i = null;
+		Color c;
 		//Pick a sprite using data from the entity
+		
+		if (e instanceof Enemy){
+			c = Color.red;
+		} else if (e instanceof Navi){
+			c = Color.blue;
+		} else if (e instanceof Panel){
+			c = Color.white;
+		} else {
+			c = Color.black;
+		}
+		
 		try {
 			//TODO Default
 			i = new Image(Constants.IMAGE_FOLDER + "panel.png");
+			
 		} catch (SlickException e1) {
 			
 			e1.printStackTrace();
@@ -55,7 +72,7 @@ public class BattleView {
 		}
 		
 		
-		entityMap.put(e, new EntityView(e,i));
+		entityMap.put(e, new EntityView(e,i,c));
 	}
 
 }

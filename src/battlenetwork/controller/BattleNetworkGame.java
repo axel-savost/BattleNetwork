@@ -17,7 +17,4 @@ public class BattleNetworkGame extends StateBasedGame{
 		this.enterState(b.getID());
 		
 	}
-
-	
-
 }
