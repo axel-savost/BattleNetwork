@@ -11,5 +11,6 @@ public abstract class Actor extends Entity {
 	public Actor(Position p){
 		super(p);
 	}
+	
 
 }
