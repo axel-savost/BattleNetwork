@@ -1,5 +1,6 @@
 package battlenetwork.controller;
 
+import org.lwjgl.opengl.Display;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.SlickException;
 

@@ -48,22 +48,27 @@ public class BattleView {
 	
 	public void assignSprite(Entity e){
 		Image i = null;
-		Color c;
+		Color c = null;
 		//Pick a sprite using data from the entity
 		
-		if (e instanceof Enemy){
-			c = Color.red;
-		} else if (e instanceof Navi){
-			c = Color.blue;
-		} else if (e instanceof Panel){
-			c = Color.white;
-		} else {
-			c = Color.black;
-		}
+		
 		
 		try {
 			//TODO Default
-			i = new Image(Constants.IMAGE_FOLDER + "panel.png");
+			
+			if (e instanceof Enemy){
+				i = new Image(Constants.IMAGE_FOLDER + "enemy.png");
+				c = Color.red;
+			} else if (e instanceof Navi){
+				i = new Image(Constants.IMAGE_FOLDER + "fighter.png");
+				c = Color.blue;
+			} else if (e instanceof Panel){
+				i = new Image(Constants.IMAGE_FOLDER + "panel.png");
+				c = Color.white;
+			} else {
+				i = new Image(Constants.IMAGE_FOLDER + "error.png");
+				c = Color.black;
+			}
 			
 		} catch (SlickException e1) {
 			
