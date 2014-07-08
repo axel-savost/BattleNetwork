@@ -20,6 +20,25 @@ public class BattleModel {
 		
 	}
 	
+	public enum Command{
+		LEFT, RIGHT, UP, DOWN, PRIMARY, SECONDARY, CUSTOMSCREEN, PAUSE;
+		
+		public Command opposite(){
+			switch(this){
+			case LEFT:
+				return RIGHT;
+			case RIGHT:
+				return LEFT;
+			case UP:
+				return DOWN;
+			case DOWN:
+				return UP;
+			default:
+				return this;
+			}
+		}
+	}
+	
 	public List<Entity> getEntityList(){
 		return entities;
 	}
@@ -33,6 +52,10 @@ public class BattleModel {
 	public void removeEntity(Entity e){
 		//TODO Fire entity-removed-event
 		entities.remove(e);
+	}
+	
+	public void recieveCommand(int playerID, Command command){
+		System.out.println("Player " + 1 + " pressed " + command.toString());
 	}
 	
 	

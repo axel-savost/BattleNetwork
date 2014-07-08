@@ -20,7 +20,7 @@ public class BattleState extends BasicGameState{
 	public void init(GameContainer gc, StateBasedGame game)
 			throws SlickException {
 		model      = new BattleModel();
-		controller = new BattleController(model);
+		controller = new BattleController(model,gc.getInput());
 		view       = new BattleView(model,controller);
 		gc.getGraphics().setBackground(Constants.BACKGROUND_COLOR);
 		
