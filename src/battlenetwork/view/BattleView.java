@@ -35,7 +35,6 @@ public class BattleView {
 
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) {
 		for (Entity e: model.getEntityList()){
-			
 			//If this entity is not mapped to its own view, then map it
 			if (!(entityMap.containsKey(e))){
 				assignSprite(e);
@@ -47,11 +46,12 @@ public class BattleView {
 	}
 	
 	public void assignSprite(Entity e){
+		if (e == null){
+			throw new NullPointerException("This should not be able to happen. Check assignSprite in BattleView.");
+		}
 		Image i = null;
 		Color c = null;
 		//Pick a sprite using data from the entity
-		
-		
 		
 		try {
 			//TODO Default
@@ -63,8 +63,34 @@ public class BattleView {
 				i = new Image(Constants.IMAGE_FOLDER + "fighter.png");
 				c = Color.blue;
 			} else if (e instanceof Panel){
-				i = new Image(Constants.IMAGE_FOLDER + "panel.png");
-				c = Color.white;
+				//Choose sprite after panel type
+				switch(((Panel)e).getType()){
+					case NORMAL:
+						i = new Image(Constants.IMAGE_FOLDER + "panel.png");
+						break;
+					case CRACKED:
+						i = new Image(Constants.IMAGE_FOLDER + "panelcracked.png");
+						break;
+					case BROKEN:
+						i = new Image(Constants.IMAGE_FOLDER + "panelbroken.png");
+						break;
+					default:
+						i = new Image(Constants.IMAGE_FOLDER + "panel.png");
+						break;
+				}
+				
+				//Choose colour after panel side
+				switch (((Panel)e).getSide()){
+				case LEFT:
+					c = Constants.LEFT_TEAM_COLOR;
+					break;
+				case RIGHT:
+					c = Constants.RIGHT_TEAM_COLOR;
+					break;
+				default:
+					c = Color.white;
+					break;
+				}
 			} else {
 				i = new Image(Constants.IMAGE_FOLDER + "error.png");
 				c = Color.black;

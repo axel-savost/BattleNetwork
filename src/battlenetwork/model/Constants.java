@@ -19,6 +19,8 @@ public class Constants {
 	public static final String MUSIC_FOLDER = DATA_FOLDER + "music/";
 	
 	public static final Color BACKGROUND_COLOR = new Color(64,96,64);
+	public static final Color LEFT_TEAM_COLOR  = new Color(64,64,255);
+	public static final Color RIGHT_TEAM_COLOR = new Color(255,64,64);
 	
 	
 

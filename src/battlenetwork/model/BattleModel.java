@@ -12,8 +12,8 @@ public class BattleModel {
 	private Field battleField;
 
 	public BattleModel(){
-		entities = new ArrayList<Entity>();
-		battleField=new Field(new Position(256,256));
+		entities    = new ArrayList<Entity>();
+		battleField = new Field(new Position(256,256));
 		
 		//Add panels
 		for (int i=0; i<battleField.getWidth(); i++){
@@ -25,14 +25,14 @@ public class BattleModel {
 		for (int i=0; i<battleField.getWidth(); i++){
 			for (int j=0; j<battleField.getHeigth(); j++){
 				if (battleField.getActor(i,j)!= null){
-				addEntity(battleField.getActor(i,j));
+					addEntity(battleField.getActor(i,j));
 				}
 			}
 		}
+		
 		//TODO Remove test
 		addEntity(new Navi(new Position(0,0)));
 		addEntity(new Enemy(new Position(128,128)));
-		//addEntity(new Panel(new Position(256,256)));
 		
 	}
 	

@@ -7,6 +7,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.state.StateBasedGame;
 
 import battlenetwork.model.Entity;
+import battlenetwork.model.Position;
 
 public class EntityView {
 	private final Entity entity;
@@ -30,8 +31,18 @@ public class EntityView {
 	
 	
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) {
-		g.drawImage(sprite, entity.getPosition().getX(), entity.getPosition().getY(), color);
+		Position p = convert(entity.getPosition());
 		
+		g.drawImage(sprite, p.getX(), p.getY(), color);
+		
+		//TODO Don't draw test rectangle
+		g.setColor(Color.red);
+		g.drawRect(entity.getPosition().getX() - 2, entity.getPosition().getY() - 2, 4, 4);
+		
+	}
+	
+	private Position convert(Position p){
+		return new Position(p.getX() - sprite.getWidth()/2, p.getY() - sprite.getHeight());
 	}
 
 	
