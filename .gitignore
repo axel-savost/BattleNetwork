@@ -1,0 +1,15 @@
+*.class
+
+% IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
+
+% Eclipse
+.settings/
+.classpath
+.project
+
+% Ignore backup files
+*~
