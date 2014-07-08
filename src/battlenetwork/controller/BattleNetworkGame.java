@@ -1,13 +1,21 @@
 package battlenetwork.controller;
 
-public class BattleNetworkGame {
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.StateBasedGame;
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+public class BattleNetworkGame extends StateBasedGame{
 
+	public BattleNetworkGame(String name) {
+		super(name);
 	}
+
+	@Override
+	public void initStatesList(GameContainer gc) throws SlickException {
+		
+		
+	}
+
+	
 
 }
