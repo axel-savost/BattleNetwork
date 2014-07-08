@@ -12,7 +12,9 @@ public class BattleNetworkGame extends StateBasedGame{
 
 	@Override
 	public void initStatesList(GameContainer gc) throws SlickException {
-		
+		BattleState b = new BattleState();
+		this.addState(b);
+		this.enterState(b.getID());
 		
 	}
 
