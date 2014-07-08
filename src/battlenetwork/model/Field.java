@@ -2,7 +2,9 @@ package battlenetwork.model;
 
 public class Field {
 	private Panel[][] panelGrid = new Panel[Constants.TILES_H*2][Constants.TILES_V];
+	private Actor[][] actorGrid = new Actor[Constants.TILES_H*2][Constants.TILES_V];
 	
+	//TODO: More customizable constructor
 	public Field(Position p){
 		
 		//Player panels
@@ -17,6 +19,9 @@ public class Field {
 				panelGrid[i+3][j] = new Panel(new Position(p,Constants.PANEL_W*(i+3),Constants.PANEL_H*j));
 			}
 		}
+		
+		
+		
 	}
 	
 	public int getWidth(){
@@ -29,6 +34,10 @@ public class Field {
 	
 	public Panel getPanel(int x, int y){
 		return panelGrid[x][y];
+	}
+	
+	public Actor getActor(int x, int y){
+		return actorGrid[x][y];
 	}
 
 }

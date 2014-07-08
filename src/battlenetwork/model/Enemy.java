@@ -11,7 +11,7 @@ public class Enemy extends Actor {
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame game, int i) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
