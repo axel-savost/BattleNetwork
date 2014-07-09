@@ -46,28 +46,28 @@ public class BattleController implements InputProviderListener{
 		BasicCommand b = (BasicCommand) c;
 		switch(b.getName()) {
 	    case "UP":
-	    	model.keyPressed(1, Key.UP);
+	    	model.keyPressed(0, Key.UP);
 	    	break;
 	    case "DOWN":
-	    	model.keyPressed(1, Key.DOWN);
+	    	model.keyPressed(0, Key.DOWN);
 	    	break;
 	    case "LEFT":
-	    	model.keyPressed(1, Key.LEFT);
+	    	model.keyPressed(0, Key.LEFT);
 	        break;
 	    case "RIGHT":
-	    	model.keyPressed(1, Key.RIGHT);
+	    	model.keyPressed(0, Key.RIGHT);
 	    	break;
 	    case "CUSTOM":
-	    	model.keyPressed(1, Key.CUSTOMSCREEN);
+	    	model.keyPressed(0, Key.CUSTOMSCREEN);
 	    	break;
 	    case "PRIMARY":
-	    	model.keyPressed(1, Key.PRIMARY);
+	    	model.keyPressed(0, Key.PRIMARY);
 	    	break;
 	    case "SECONDARY":
-	    	model.keyPressed(1, Key.SECONDARY);
+	    	model.keyPressed(0, Key.SECONDARY);
 	    	break;
 	    case "PAUSE":
-	    	model.keyPressed(1, Key.PAUSE);
+	    	model.keyPressed(0, Key.PAUSE);
 	    	break;
 	    default:
 	    	break;
@@ -80,28 +80,28 @@ public class BattleController implements InputProviderListener{
 		BasicCommand b = (BasicCommand) c;
 		switch(b.getName()) {
 	    case "UP":
-	    	model.keyReleased(1, Key.UP);
+	    	model.keyReleased(0, Key.UP);
 	    	break;
 	    case "DOWN":
-	    	model.keyReleased(1, Key.DOWN);
+	    	model.keyReleased(0, Key.DOWN);
 	    	break;
 	    case "LEFT":
-	    	model.keyReleased(1, Key.LEFT);
+	    	model.keyReleased(0, Key.LEFT);
 	        break;
 	    case "RIGHT":
-	    	model.keyReleased(1, Key.RIGHT);
+	    	model.keyReleased(0, Key.RIGHT);
 	    	break;
 	    case "CUSTOM":
-	    	model.keyReleased(1, Key.CUSTOMSCREEN);
+	    	model.keyReleased(0, Key.CUSTOMSCREEN);
 	    	break;
 	    case "PRIMARY":
-	    	model.keyReleased(1, Key.PRIMARY);
+	    	model.keyReleased(0, Key.PRIMARY);
 	    	break;
 	    case "SECONDARY":
-	    	model.keyReleased(1, Key.SECONDARY);
+	    	model.keyReleased(0, Key.SECONDARY);
 	    	break;
 	    case "PAUSE":
-	    	model.keyReleased(1, Key.PAUSE);
+	    	model.keyReleased(0, Key.PAUSE);
 	    	break;
 	    default:
 	    	break;

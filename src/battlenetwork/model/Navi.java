@@ -3,6 +3,8 @@ package battlenetwork.model;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 
+import battlenetwork.model.BattleModel.Key;
+
 public class Navi extends Actor{
 	private final int playerID;
 
@@ -12,7 +14,7 @@ public class Navi extends Actor{
 	}
 	
 	public Navi(Position p){
-		this(p,1);
+		this(p,0);
 	}
 
 	@Override
@@ -24,6 +26,8 @@ public class Navi extends Actor{
 	public int getPlayerID() {
 		return playerID;
 	}
+
+	
 
 
 }

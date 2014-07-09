@@ -32,15 +32,34 @@ public class Field {
 	}
 	
 	public Panel getPanel(int x, int y){
-		return panelGrid[x][y];
+		if (x >= 0 && y >= 0 && x < Constants.TILES_H*2 && y < Constants.TILES_V){
+			return panelGrid[x][y];
+		} else {
+			return null;
+		}
+		
 	}
 	
 	public Actor getActor(int x, int y){
-		return actorGrid[x][y];
+		if (x >= 0 && y >= 0 && x < Constants.TILES_H*2 && y < Constants.TILES_V){
+			return actorGrid[x][y];
+		} else {
+			return null;
+		}
 	}
 	
 	public Position getPosition(int x, int y){
 		return getPanel(x,y).getPosition();
+	}
+	
+	public boolean accessAllowed(int x, int y, Side side){
+		Panel panel = getPanel(x,y);
+		if (panel == null || panel.getSide() != side || getActor(x,y) != null){
+			//Access denied if the panel doesn't exist, if the panel's owner doesn't match or if there's an actor on it.
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 }

@@ -9,10 +9,12 @@ import org.newdawn.slick.state.StateBasedGame;
 public class BattleModel {
 	
 	private List<Entity> entities;
+	private List<IControllable> players;
 	private Field battleField;
 
 	public BattleModel(){
 		entities    = new ArrayList<Entity>();
+		players    = new ArrayList<IControllable>();
 		battleField = new Field(new Position(256,256));
 		
 		//Add panels
@@ -62,6 +64,10 @@ public class BattleModel {
 	
 	public void addEntity(Entity e){
 		//TODO Fire entity-added-event
+		if (e instanceof Navi){
+			players.add((Navi)e);
+		}
+		
 		entities.add(e);
 		System.out.println("Added: " + e);
 	}
@@ -71,12 +77,15 @@ public class BattleModel {
 		entities.remove(e);
 	}
 	
-	public void keyPressed(int playerID, Key command){
-		System.out.println("Player " + playerID + " pressed " + command);
+	public void keyPressed(int playerID, Key key){
+		System.out.println("Player " + playerID + " pressed " + key);
+		players.get(playerID).pressKey(key);
+		
 	}
 	
-	public void keyReleased(int playerID, Key command){
-		System.out.println("Player " + playerID + " released " + command);
+	public void keyReleased(int playerID, Key key){
+		System.out.println("Player " + playerID + " released " + key);
+		players.get(playerID).releaseKey(key);
 	}
 	
 	
