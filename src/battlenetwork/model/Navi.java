@@ -17,12 +17,6 @@ public class Navi extends Actor{
 		this(p,0);
 	}
 
-	@Override
-	public void update(GameContainer gc, StateBasedGame game, int i) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public int getPlayerID() {
 		return playerID;
 	}

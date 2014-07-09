@@ -10,8 +10,6 @@ public enum Direction {
 		this.dy = dy;
 	}
 	
-	
-	
 	public Direction opposite(){
 		switch(this){
 			case LEFT:
@@ -25,6 +23,14 @@ public enum Direction {
 			default:
 				return this;
 		}
+	}
+
+	public int getX() {
+		return dx;
+	}
+
+	public int getY() {
+		return dy;
 	}
 	
 }

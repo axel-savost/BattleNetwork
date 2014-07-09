@@ -14,6 +14,7 @@ public abstract class Actor extends Entity implements IControllable{
 	private int hp;
 	private Direction heading;
 	private int moveDelay = 0;
+	private Side side;
 	
 	public Actor(Position p){
 		super(p);
@@ -87,13 +88,32 @@ public abstract class Actor extends Entity implements IControllable{
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame game, int i) {
+		System.out.println("Wait for " + moveDelay + " frames. Then move.");
 		if (moveDelay > 0){
+			System.out.println("Wait for " + moveDelay + " frames. Then move.");
 			moveDelay--;
 		}
 		
 	}
+
+	public Direction getHeading() {
+		return heading;
+	}
 	
+	public void setHeading(Direction d) {
+		heading = d;
+	}
 	
-	
+	public boolean readyToMove(){
+		return moveDelay <= 0;
+	}
+
+	public Side getSide() {
+		return side;
+	}
+
+	public void setSide(Side side) {
+		this.side = side;
+	}
 
 }

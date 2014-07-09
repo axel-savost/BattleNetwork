@@ -9,12 +9,12 @@ import org.newdawn.slick.state.StateBasedGame;
 public class BattleModel {
 	
 	private List<Entity> entities;
-	private List<IControllable> players;
+	private List<Actor> players;
 	private Field battleField;
 
 	public BattleModel(){
 		entities    = new ArrayList<Entity>();
-		players    = new ArrayList<IControllable>();
+		players    = new ArrayList<Actor>();
 		battleField = new Field(new Position(256,256));
 		
 		//Add panels
@@ -90,7 +90,23 @@ public class BattleModel {
 	
 	
 	public void update(GameContainer gc, StateBasedGame game, int i) {
-		// TODO Auto-generated method stub
+		
+		for (Actor p: players){
+			if (p instanceof Navi){
+				Navi n = (Navi)p;
+				if (n.getHeading() != Direction.NONE /*&& n.readyToMove()*/){
+					
+					int[] pair = battleField.findActor(p);
+					
+					if (pair != null && battleField.accessAllowed(pair[0], pair[1], Side.LEFT)){
+						battleField.move(p, p.getHeading());
+					} else {
+						n.setHeading(Direction.NONE);
+					}
+				}
+				
+			}
+		}
 		
 	}
 

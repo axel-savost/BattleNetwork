@@ -56,10 +56,38 @@ public class Field {
 		Panel panel = getPanel(x,y);
 		if (panel == null || panel.getSide() != side || getActor(x,y) != null){
 			//Access denied if the panel doesn't exist, if the panel's owner doesn't match or if there's an actor on it.
+			System.out.println("Access denied!");
 			return false;
 		} else {
 			return true;
 		}
+	}
+	
+	public void move(Actor a, Direction d){
+		int[] coords = findActor(a);
+		if (coords != null && accessAllowed(coords[0] + d.getX(), coords[1] + d.getY(), a.getSide())){
+			actorGrid[coords[0]][coords[1]] = null;
+			actorGrid[coords[0] + d.getX()][coords[1] + d.getY()] = a;
+			a.setPosition(this.getPosition(coords[0] + d.getX(), coords[1] + d.getY()));
+			System.out.println("Moved!");
+		}
+	}
+	
+	public int[] findActor(Actor a){
+		if (a == null){
+			return null;
+		}
+		
+		for (int i = 0; i<actorGrid.length; i++){
+			for (int j = 0; j<actorGrid[0].length; j++){
+				if (a.equals(actorGrid[i][j])){
+					int[] in = {i,j};
+					return in;
+				}
+			}
+		}
+		
+		return null;
 	}
 
 }
