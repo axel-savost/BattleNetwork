@@ -14,7 +14,7 @@ public class Constants {
 	public static final int PANEL_W     = 128;
 	public static final int PANEL_H     = 64;
 	
-	public static final int MOVE_DELAY  = 6;
+	public static final int MOVE_DELAY  = 100;
 	
 	public static final String DATA_FOLDER  = "data/";
 	public static final String IMAGE_FOLDER = DATA_FOLDER + "image/";

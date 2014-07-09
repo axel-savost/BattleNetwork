@@ -21,6 +21,10 @@ public class Field {
 			}
 		}
 		
+		//Player and an enemy
+		actorGrid[1][1]=new Navi(getPosition(1, 1));
+		actorGrid[4][1]=new Enemy(getPosition(4, 1));
+		
 	}
 	
 	public int getWidth(){
@@ -55,10 +59,10 @@ public class Field {
 	public boolean accessAllowed(int x, int y, Side side){
 		Panel panel = getPanel(x,y);
 		if (panel == null || panel.getSide() != side || getActor(x,y) != null){
-			//Access denied if the panel doesn't exist, if the panel's owner doesn't match or if there's an actor on it.
-			System.out.println("Access denied!");
+			//Access denied if the panel doesn't exist, if the panel's owner doesn't match or if there's an actor on it.			
 			return false;
 		} else {
+			System.out.println("Access allowed!");
 			return true;
 		}
 	}
@@ -80,13 +84,15 @@ public class Field {
 		
 		for (int i = 0; i<actorGrid.length; i++){
 			for (int j = 0; j<actorGrid[0].length; j++){
+				System.out.println("in the loop at "+i+" "+j+" where there is "+actorGrid[i][j]);
 				if (a.equals(actorGrid[i][j])){
 					int[] in = {i,j};
+					System.out.println("Not null");
 					return in;
 				}
 			}
 		}
-		
+		System.out.println("null");
 		return null;
 	}
 

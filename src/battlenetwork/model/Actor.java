@@ -88,10 +88,9 @@ public abstract class Actor extends Entity implements IControllable{
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame game, int i) {
-		System.out.println("Wait for " + moveDelay + " frames. Then move.");
 		if (moveDelay > 0){
-			System.out.println("Wait for " + moveDelay + " frames. Then move.");
-			moveDelay--;
+			System.out.println("Wait for " + moveDelay + " ms. Then move.");
+			moveDelay=moveDelay-i;
 		}
 		
 	}

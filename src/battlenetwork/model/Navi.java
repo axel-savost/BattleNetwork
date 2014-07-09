@@ -11,6 +11,7 @@ public class Navi extends Actor{
 	public Navi(Position p, int playerID) {
 		super(p);
 		this.playerID = playerID;
+		this.setSide(Side.LEFT);
 	}
 	
 	public Navi(Position p){

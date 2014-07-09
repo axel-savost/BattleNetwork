@@ -32,9 +32,6 @@ public class BattleModel {
 			}
 		}
 		
-		//TODO Remove test
-		addEntity(new Navi(battleField.getPosition(1, 1)));
-		addEntity(new Enemy(battleField.getPosition(4, 1)));
 		addEntity(new CustomGauge(new Position(640,64)));
 		
 	}
@@ -95,15 +92,16 @@ public class BattleModel {
 		for (Actor p: players){
 			if (p instanceof Navi){
 				Navi n = (Navi)p;
-				if (n.getHeading() != Direction.NONE /*&& n.readyToMove()*/){
-					
+				if (n.getHeading() != Direction.NONE && n.readyToMove()){
+					System.out.println("Moving");
 					int[] pair = battleField.findActor(p);
+					pair[0]=pair[0]+n.getHeading().getX();
+					pair[1]=pair[1]+n.getHeading().getY();
 					
 					if (pair != null && battleField.accessAllowed(pair[0], pair[1], Side.LEFT)){
 						battleField.move(p, p.getHeading());
-					} else {
-						n.setHeading(Direction.NONE);
 					}
+						n.setHeading(Direction.NONE);
 				}
 				
 			}
