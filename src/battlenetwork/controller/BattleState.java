@@ -1,9 +1,9 @@
 package battlenetwork.controller;
 
-import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.command.InputProvider;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -19,9 +19,14 @@ public class BattleState extends BasicGameState{
 	@Override
 	public void init(GameContainer gc, StateBasedGame game)
 			throws SlickException {
+		
+	    
+	    
 		model      = new BattleModel();
 		controller = new BattleController(model,gc.getInput());
 		view       = new BattleView(model,controller);
+		
+		//Set Background Colour
 		gc.getGraphics().setBackground(Constants.BACKGROUND_COLOR);
 		
 	}
@@ -43,6 +48,8 @@ public class BattleState extends BasicGameState{
 	public int getID() {
 		return 5;
 	}
+
+	
 
 
 }

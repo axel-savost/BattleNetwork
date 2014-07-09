@@ -36,10 +36,10 @@ public class BattleModel {
 		
 	}
 	
-	public enum Command{
+	public enum Key{
 		LEFT, RIGHT, UP, DOWN, PRIMARY, SECONDARY, CUSTOMSCREEN, PAUSE;
 		
-		public Command opposite(){
+		public Key opposite(){
 			switch(this){
 			case LEFT:
 				return RIGHT;
@@ -70,8 +70,12 @@ public class BattleModel {
 		entities.remove(e);
 	}
 	
-	public void recieveCommand(int playerID, Command command){
-		System.out.println("Player " + 1 + " pressed " + command.toString());
+	public void keyPressed(int playerID, Key command){
+		System.out.println("Player " + playerID + " pressed " + command);
+	}
+	
+	public void keyReleased(int playerID, Key command){
+		System.out.println("Player " + playerID + " released " + command);
 	}
 	
 	

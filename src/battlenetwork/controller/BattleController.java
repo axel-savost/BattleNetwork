@@ -5,43 +5,109 @@ import java.util.List;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.KeyListener;
+import org.newdawn.slick.command.BasicCommand;
+import org.newdawn.slick.command.Command;
+import org.newdawn.slick.command.InputProvider;
+import org.newdawn.slick.command.InputProviderListener;
+import org.newdawn.slick.command.KeyControl;
 import org.newdawn.slick.state.StateBasedGame;
 
 import battlenetwork.model.BattleModel;
-import battlenetwork.model.BattleModel.Command;
+import battlenetwork.model.BattleModel.Key;
 
-public class BattleController {
-	
-	private List<ButtonMap> playerMaps;
+public class BattleController implements InputProviderListener{
 	private BattleModel model;
+	private InputProvider provider;
 
 	public BattleController(BattleModel model, Input input) {
 		this.model = model;
-		playerMaps = new ArrayList<ButtonMap>();
 		
-		//Controls for player 1
-		ButtonMap map = new ButtonMap(1,input);
-		map.setButton(Input.KEY_A, Command.LEFT);
-		map.setButton(Input.KEY_D, Command.RIGHT);
-		map.setButton(Input.KEY_W, Command.UP);
-		map.setButton(Input.KEY_S, Command.DOWN);
-		map.setButton(Input.KEY_K, Command.PRIMARY);
-		map.setButton(Input.KEY_L, Command.SECONDARY);
-		map.setButton(Input.KEY_ENTER, Command.CUSTOMSCREEN);
-		map.setButton(Input.KEY_PAUSE, Command.PAUSE);
-		playerMaps.add(map);
+		//Set input keys
+		provider = new InputProvider(input);
+	    provider.addListener(this);
+	    provider.bindCommand(new KeyControl(Input.KEY_W), new BasicCommand("UP"));
+	    provider.bindCommand(new KeyControl(Input.KEY_A), new BasicCommand("LEFT"));
+	    provider.bindCommand(new KeyControl(Input.KEY_S), new BasicCommand("DOWN"));
+	    provider.bindCommand(new KeyControl(Input.KEY_D), new BasicCommand("RIGHT"));
+	    provider.bindCommand(new KeyControl(Input.KEY_ENTER), new BasicCommand("CUSTOM"));
+	    provider.bindCommand(new KeyControl(Input.KEY_J), new BasicCommand("PRIMARY"));
+	    provider.bindCommand(new KeyControl(Input.KEY_K), new BasicCommand("SECONDARY"));
+	    provider.bindCommand(new KeyControl(Input.KEY_PAUSE), new BasicCommand("PAUSE"));
 	}
 
 	public void update(GameContainer gc, StateBasedGame game, int i) {
-		for (ButtonMap map: playerMaps){
-			List<Command> list = map.getKeyPresses();
-			if (!list.isEmpty()){
-				for (Command c: list){
-					model.recieveCommand(map.getID(), c);
-				}
-			}
-		}
+		
 		
 	}
+
+	@Override
+	public void controlPressed(Command c) {
+		BasicCommand b = (BasicCommand) c;
+		switch(b.getName()) {
+	    case "UP":
+	    	model.keyPressed(1, Key.UP);
+	    	break;
+	    case "DOWN":
+	    	model.keyPressed(1, Key.DOWN);
+	    	break;
+	    case "LEFT":
+	    	model.keyPressed(1, Key.LEFT);
+	        break;
+	    case "RIGHT":
+	    	model.keyPressed(1, Key.RIGHT);
+	    	break;
+	    case "CUSTOM":
+	    	model.keyPressed(1, Key.CUSTOMSCREEN);
+	    	break;
+	    case "PRIMARY":
+	    	model.keyPressed(1, Key.PRIMARY);
+	    	break;
+	    case "SECONDARY":
+	    	model.keyPressed(1, Key.SECONDARY);
+	    	break;
+	    case "PAUSE":
+	    	model.keyPressed(1, Key.PAUSE);
+	    	break;
+	    default:
+	    	break;
+	    }
+		
+	}
+
+	@Override
+	public void controlReleased(Command c) {
+		BasicCommand b = (BasicCommand) c;
+		switch(b.getName()) {
+	    case "UP":
+	    	model.keyReleased(1, Key.UP);
+	    	break;
+	    case "DOWN":
+	    	model.keyReleased(1, Key.DOWN);
+	    	break;
+	    case "LEFT":
+	    	model.keyReleased(1, Key.LEFT);
+	        break;
+	    case "RIGHT":
+	    	model.keyReleased(1, Key.RIGHT);
+	    	break;
+	    case "CUSTOM":
+	    	model.keyReleased(1, Key.CUSTOMSCREEN);
+	    	break;
+	    case "PRIMARY":
+	    	model.keyReleased(1, Key.PRIMARY);
+	    	break;
+	    case "SECONDARY":
+	    	model.keyReleased(1, Key.SECONDARY);
+	    	break;
+	    case "PAUSE":
+	    	model.keyReleased(1, Key.PAUSE);
+	    	break;
+	    default:
+	    	break;
+	    }
+		
+	}
+
 
 }

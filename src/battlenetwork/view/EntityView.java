@@ -1,5 +1,8 @@
 package battlenetwork.view;
 
+
+
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -7,6 +10,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.state.StateBasedGame;
 
 import battlenetwork.model.Entity;
+import battlenetwork.model.Panel;
 import battlenetwork.model.Position;
 
 public class EntityView {
@@ -31,7 +35,13 @@ public class EntityView {
 	
 	
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) {
-		Position p = convert(entity.getPosition());
+		Position p;
+		if (entity instanceof Panel){
+			p = convertToCenter(entity.getPosition());
+		} else {
+			p = convertToBottomCenter(entity.getPosition());
+		}
+		
 		
 		g.drawImage(sprite, p.getX(), p.getY(), color);
 		
@@ -41,8 +51,12 @@ public class EntityView {
 		
 	}
 	
-	private Position convert(Position p){
+	private Position convertToBottomCenter(Position p){
 		return new Position(p.getX() - sprite.getWidth()/2, p.getY() - sprite.getHeight());
+	}
+	
+	private Position convertToCenter(Position p){
+		return new Position(p.getX() - sprite.getWidth()/2, p.getY() - sprite.getHeight()/2);
 	}
 
 	
