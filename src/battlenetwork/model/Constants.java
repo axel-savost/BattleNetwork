@@ -23,6 +23,13 @@ public class Constants {
 	public static final Color LEFT_TEAM_COLOR  = new Color(64,64,255);
 	public static final Color RIGHT_TEAM_COLOR = new Color(255,64,64);
 	
+	public static final int CUSTOM_GAUGE_W    = 512;
+	public static final int CUSTOM_GAUGE_H    = 32;
+	public static final Color CUSTOM_GAUGE_FILL_COLOR = new Color(64,64,255);
+	public static final Color CUSTOM_GAUGE_BACKGROUND_COLOR = new Color(255,64,64);
+	
+	public static final int CUSTOM_GAUGE_MAX_FULLNESS    = 1000;
+	public static final int CUSTOM_GAUGE_DEFAULT_FILL_TIME_MS    = 10000;
 	
 	public static final String SHADOW_IMAGE    = IMAGE_FOLDER + "shadows.png";
 	

@@ -19,6 +19,7 @@ import battlenetwork.model.Enemy;
 import battlenetwork.model.Entity;
 import battlenetwork.model.Navi;
 import battlenetwork.model.Panel;
+import battlenetwork.model.CustomGauge;
 
 public class BattleView {
 	
@@ -91,6 +92,11 @@ public class BattleView {
 					c = Color.white;
 					break;
 				}
+				
+				
+			} else if (e instanceof CustomGauge){
+				i = new Image(Constants.IMAGE_FOLDER + "customborder.png");
+				c = Color.white;
 			} else {
 				i = new Image(Constants.IMAGE_FOLDER + "error.png");
 				c = Color.black;

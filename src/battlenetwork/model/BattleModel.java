@@ -33,6 +33,7 @@ public class BattleModel {
 		//TODO Remove test
 		addEntity(new Navi(battleField.getPosition(1, 1)));
 		addEntity(new Enemy(battleField.getPosition(4, 1)));
+		addEntity(new CustomGauge(new Position(640,64)));
 		
 	}
 	
@@ -81,7 +82,9 @@ public class BattleModel {
 	
 	
 	public void update(GameContainer gc, StateBasedGame game, int i) {
-		// TODO Auto-generated method stub
+		for (int j=0; j<entities.size();j++){
+			entities.get(j).update(gc, game, i);
+		}
 		
 	}
 
