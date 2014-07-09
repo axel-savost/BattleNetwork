@@ -31,8 +31,8 @@ public class BattleModel {
 		}
 		
 		//TODO Remove test
-		addEntity(new Navi(new Position(0,0)));
-		addEntity(new Enemy(new Position(128,128)));
+		addEntity(new Navi(battleField.getPosition(1, 1)));
+		addEntity(new Enemy(battleField.getPosition(4, 1)));
 		
 	}
 	

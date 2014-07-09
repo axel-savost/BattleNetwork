@@ -1,6 +1,7 @@
 package battlenetwork.model;
 
 import org.newdawn.slick.Color;
+import org.newdawn.slick.Image;
 
 public class Constants {
 	public static final int GAME_WIDTH  = 1280;
@@ -21,6 +22,10 @@ public class Constants {
 	public static final Color BACKGROUND_COLOR = new Color(64,96,64);
 	public static final Color LEFT_TEAM_COLOR  = new Color(64,64,255);
 	public static final Color RIGHT_TEAM_COLOR = new Color(255,64,64);
+	
+	
+	public static final String SHADOW_IMAGE    = IMAGE_FOLDER + "shadows.png";
+	
 	
 	
 

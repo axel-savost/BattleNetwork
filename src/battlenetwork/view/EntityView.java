@@ -7,8 +7,11 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
+import battlenetwork.model.Actor;
+import battlenetwork.model.Constants;
 import battlenetwork.model.Entity;
 import battlenetwork.model.Panel;
 import battlenetwork.model.Position;
@@ -42,7 +45,14 @@ public class EntityView {
 			p = convertToBottomCenter(entity.getPosition());
 		}
 		
-		
+		if (entity instanceof Actor){
+			try {
+				g.drawImage(new Image(Constants.SHADOW_IMAGE), p.getX(), p.getY() + 80, color);
+			} catch (SlickException e) {
+				System.out.println("Shadow doesn't exist! Check EntityView's render method!");
+				System.exit(3);
+			}
+		}
 		g.drawImage(sprite, p.getX(), p.getY(), color);
 		
 		//TODO Don't draw test rectangle
