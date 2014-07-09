@@ -15,6 +15,7 @@ import battlenetwork.model.Constants;
 import battlenetwork.model.Entity;
 import battlenetwork.model.Panel;
 import battlenetwork.model.Position;
+import battlenetwork.model.CustomGauge;
 
 public class EntityView {
 	private final Entity entity;
@@ -52,6 +53,13 @@ public class EntityView {
 				System.out.println("Shadow doesn't exist! Check EntityView's render method!");
 				System.exit(3);
 			}
+		}
+		
+		if (entity instanceof CustomGauge) {
+			g.setColor(Constants.CUSTOM_GAUGE_BACKGROUND_COLOR);
+			g.fillRect(p.getX(),p.getY(),Constants.CUSTOM_GAUGE_W,Constants.CUSTOM_GAUGE_H);
+			g.setColor(Constants.CUSTOM_GAUGE_FILL_COLOR);
+			g.fillRect(p.getX(),p.getY(),Constants.CUSTOM_GAUGE_W*((CustomGauge)entity).getFullness()/Constants.CUSTOM_GAUGE_MAX_FULLNESS,Constants.CUSTOM_GAUGE_H);
 		}
 		g.drawImage(sprite, p.getX(), p.getY(), color);
 		
