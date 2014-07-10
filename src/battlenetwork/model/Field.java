@@ -33,6 +33,9 @@ public class Field {
 		
 		//TODO TEMP
 		changePanel(2,1,new LavaPanel(getPosition(2,1),getPanel(2,1).getSide()));
+		changePanel(2,2,new LavaPanel(getPosition(2,2),getPanel(2,2).getSide()));
+		changePanel(2,0,new LavaPanel(getPosition(2,0),getPanel(2,0).getSide()));
+		changePanel(0,1,new LavaPanel(getPosition(0,1),getPanel(0,1).getSide()));
 		
 	}
 	

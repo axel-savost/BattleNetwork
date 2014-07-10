@@ -30,7 +30,7 @@ public class LavaPanel extends Panel {
 
 	@Override
 	public Panel enteringChange() {
-		return new NormalPanel(new Position(0,0),getSide());
+		return new NormalPanel(getPosition(),getSide());
 	}
 
 }
