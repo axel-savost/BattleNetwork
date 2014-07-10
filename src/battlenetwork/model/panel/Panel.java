@@ -48,12 +48,14 @@ public abstract class Panel extends Entity{
 	
 	/**
 	 * Returns the panel this panel changes to when an Actor enters.
+	 * If null is returned, the panel won't change.
 	 * @return Said panel
 	 */
 	public abstract Panel enteringChange();
 	
 	/**
 	 * Returns the panel this panel changes to when an Actor leaves.
+	 * If null is returned, the panel won't change.
 	 * @return Said panel
 	 */
 	public abstract Panel leavingChange();

@@ -8,6 +8,7 @@ import battlenetwork.model.utility.Constants;
 import battlenetwork.model.utility.Direction;
 import battlenetwork.model.utility.Position;
 import battlenetwork.model.utility.Side;
+import battlenetwork.view.SoundBox;
 
 /**
  * An actor is acting in battle. This means it's on the battlefield and can be affected by other actors.
@@ -24,6 +25,9 @@ public abstract class Actor extends Entity implements IControllable{
 		super(p);
 		
 		heading = Direction.NONE;
+		
+		//TODO Tempfix
+		hp = 200;
 	}
 
 	@Override
@@ -83,7 +87,12 @@ public abstract class Actor extends Entity implements IControllable{
 		hp -= damage;
 		if (hp <= 0){
 			die();
+			SoundBox.play("death");
+		} else {
+			SoundBox.play("hit");
 		}
+		
+		
 	}
 	
 	public void die(){

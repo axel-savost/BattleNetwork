@@ -63,6 +63,13 @@ public class EntityView {
 		}
 		g.drawImage(sprite, p.getX(), p.getY(), color);
 		
+		
+		if (entity instanceof Actor){
+			g.setColor(Color.yellow);
+			g.drawString("" + ((Actor)entity).getHp(), entity.getPosition().getX(), entity.getPosition().getY());
+		}
+		
+		
 		//TODO Don't draw test rectangle
 		g.setColor(Color.red);
 		g.drawRect(entity.getPosition().getX() - 2, entity.getPosition().getY() - 2, 4, 4);
@@ -70,6 +77,9 @@ public class EntityView {
 	}
 	
 	private Position convertToBottomCenter(Position p){
+		if (p == null){
+			throw new NullPointerException("Don't convert null positions please");
+		}
 		return new Position(p.getX() - sprite.getWidth()/2, p.getY() - sprite.getHeight());
 	}
 	

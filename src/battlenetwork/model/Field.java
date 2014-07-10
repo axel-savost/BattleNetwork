@@ -37,7 +37,10 @@ public class Field {
 		actorGrid[4][1]=new Enemy(getPosition(4, 1));
 		
 		//TODO TEMP
-		changePanel(2,1,new LavaPanel(getPosition(2,1),Side.LEFT));
+		changePanel(2,1,new LavaPanel(getPosition(2,1),getPanel(2,1).getSide()));
+		changePanel(2,2,new LavaPanel(getPosition(2,2),getPanel(2,2).getSide()));
+		changePanel(2,0,new LavaPanel(getPosition(2,0),getPanel(2,0).getSide()));
+		changePanel(0,1,new LavaPanel(getPosition(0,1),getPanel(0,1).getSide()));
 		
 	}
 	
@@ -99,6 +102,13 @@ public class Field {
 		Panel p = getPanel(x,y);
 		actorGrid[x][y] = a;
 		p.stepOn(a);
+		
+		//Change panel if necessary
+		if (p.enteringChange() != null){
+			System.out.println(getPosition(x,y));
+			p.enteringChange().setPosition(getPosition(x,y));
+			changePanel(x,y,p.enteringChange());
+		}
 	}
 	
 	/**
@@ -111,6 +121,11 @@ public class Field {
 		p.stepOff(getActor(x,y));
 		actorGrid[x][y] = null;
 		
+		//Change panel if necessary
+		if (p.leavingChange() != null){
+			p.leavingChange().setPosition(getPosition(x,y));
+			changePanel(x,y,p.leavingChange());
+		}
 	}
 	
 	public void changePanel(int x, int y, Panel p){

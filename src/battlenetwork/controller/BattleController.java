@@ -15,6 +15,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import battlenetwork.model.BattleModel;
 import battlenetwork.model.BattleModel.Key;
+import battlenetwork.view.SoundBox;
 
 public class BattleController implements InputProviderListener{
 	private BattleModel model;

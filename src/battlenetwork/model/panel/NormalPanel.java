@@ -22,12 +22,12 @@ public class NormalPanel extends Panel{
 
 	@Override
 	public Panel enteringChange() {
-		return this;
+		return null;
 	}
 
 	@Override
 	public Panel leavingChange() {
-		return this;
+		return null;
 	}
 
 
