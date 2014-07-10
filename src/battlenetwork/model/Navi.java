@@ -1,14 +1,18 @@
 package battlenetwork.model;
 
+import java.util.Queue;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 
 import battlenetwork.model.BattleModel.Key;
+import battlenetwork.model.card.Card;
 import battlenetwork.model.utility.Position;
 import battlenetwork.model.utility.Side;
 
 public class Navi extends Actor{
 	private final int playerID;
+	private Queue<Card> cardQueue;
 
 	public Navi(Position p, int playerID) {
 		super(p);
@@ -23,8 +27,25 @@ public class Navi extends Actor{
 	public int getPlayerID() {
 		return playerID;
 	}
-
 	
-
+	public void insertCard(Card c){
+		cardQueue.add(c);
+	}
+	
+	/**
+	 * Removes the card to use and returns it.
+	 * @return
+	 */
+	public Card takeCard(){
+		return cardQueue.poll();
+	}
+	
+	/**
+	 * Returns the card without removing it.
+	 * @return
+	 */
+	public Card seeCard(){
+		return cardQueue.peek();
+	}
 
 }

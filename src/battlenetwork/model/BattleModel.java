@@ -18,6 +18,8 @@ public class BattleModel {
 	private List<Entity> entities;
 	private List<Actor> players;
 	private Field battleField;
+	
+	private Side winner = Side.NEUTRAL;
 
 	public BattleModel(){
 		entities    = new ArrayList<Entity>();
@@ -136,6 +138,10 @@ public class BattleModel {
 			entities.get(j).update(gc, game, i);
 		}
 		
+	}
+	
+	public Side getWinner(){
+		return winner;
 	}
 
 }
