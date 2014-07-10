@@ -1,11 +1,15 @@
 package battlenetwork.model;
 
-public class Field {
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.state.StateBasedGame;
+
+public class Field extends Entity {
 	private Panel[][] panelGrid = new Panel[Constants.TILES_H*2][Constants.TILES_V];
 	private Actor[][] actorGrid = new Actor[Constants.TILES_H*2][Constants.TILES_V];
 	
 	//TODO: More customizable constructor
-	public Field(Position p){
+	public Field(Position p) {
+		super(p);
 		//Player panels
 		for (int i=0;i<Constants.TILES_H;i++){
 			for (int j=0;j<Constants.TILES_V;j++){
@@ -62,7 +66,6 @@ public class Field {
 			//Access denied if the panel doesn't exist, if the panel's owner doesn't match or if there's an actor on it.			
 			return false;
 		} else {
-			System.out.println("Access allowed!");
 			return true;
 		}
 	}
@@ -73,7 +76,6 @@ public class Field {
 			actorGrid[coords[0]][coords[1]] = null;
 			actorGrid[coords[0] + d.getX()][coords[1] + d.getY()] = a;
 			a.setPosition(this.getPosition(coords[0] + d.getX(), coords[1] + d.getY()));
-			System.out.println("Moved!");
 		}
 	}
 	
@@ -87,13 +89,21 @@ public class Field {
 				System.out.println("in the loop at "+i+" "+j+" where there is "+actorGrid[i][j]);
 				if (a.equals(actorGrid[i][j])){
 					int[] in = {i,j};
-					System.out.println("Not null");
 					return in;
 				}
 			}
 		}
-		System.out.println("null");
 		return null;
+	}
+	
+	public void update(GameContainer gc, StateBasedGame game, int i){
+		for (Panel p:getPanelList()){
+			p.update(gc, game, i);
+		}
+		for (Actor a:getActorList()){
+			a.update(gc, game, i);
+		}
+		
 	}
 
 }
