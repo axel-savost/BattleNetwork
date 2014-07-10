@@ -6,6 +6,12 @@ import java.util.List;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 
+import battlenetwork.model.utility.Direction;
+import battlenetwork.model.utility.Position;
+import battlenetwork.model.utility.Side;
+
+import battlenetwork.model.panel.Panel;
+
 public class BattleModel {
 	
 	private List<Entity> entities;
@@ -16,7 +22,7 @@ public class BattleModel {
 		entities    = new ArrayList<Entity>();
 		players    = new ArrayList<Actor>();
 		battleField = new Field(new Position(256,256));
-		
+		/*
 		//Add panels
 		for (int i=0; i<battleField.getWidth(); i++){
 			for (int j=0; j<battleField.getHeigth(); j++){
@@ -29,6 +35,11 @@ public class BattleModel {
 				if (battleField.getActor(i,j)!= null){
 					addEntity(battleField.getActor(i,j));
 				}
+			}
+		}*/
+		for (Actor a: battleField.getActorList()){
+			if (a instanceof Navi) {
+				players.add((Navi)a);
 			}
 		}
 		
@@ -56,14 +67,19 @@ public class BattleModel {
 	}
 	
 	public List<Entity> getEntityList(){
-		return entities;
+		List<Entity> allEntities = new ArrayList<Entity>();
+		allEntities.addAll(entities);
+		allEntities.addAll(battleField.getPanelList());
+		allEntities.addAll(battleField.getActorList());
+		return allEntities;
+		
 	}
 	
 	public void addEntity(Entity e){
 		//TODO Fire entity-added-event
-		if (e instanceof Navi){
+		/*if (e instanceof Navi){
 			players.add((Navi)e);
-		}
+		}*/
 		
 		entities.add(e);
 		System.out.println("Added: " + e);
@@ -107,7 +123,12 @@ public class BattleModel {
 			}
 
 		}
-		
+		for (Panel p:battleField.getPanelList()){
+			p.update(gc, game, i);
+		}
+		for (Actor a:battleField.getActorList()){
+			a.update(gc, game, i);
+		}
 		for (int j=0; j<entities.size();j++){
 			entities.get(j).update(gc, game, i);
 		}

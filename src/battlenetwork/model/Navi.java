@@ -4,6 +4,8 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 
 import battlenetwork.model.BattleModel.Key;
+import battlenetwork.model.utility.Position;
+import battlenetwork.model.utility.Side;
 
 public class Navi extends Actor{
 	private final int playerID;

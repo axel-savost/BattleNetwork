@@ -11,11 +11,11 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 import battlenetwork.model.Actor;
-import battlenetwork.model.Constants;
 import battlenetwork.model.Entity;
-import battlenetwork.model.Panel;
-import battlenetwork.model.Position;
 import battlenetwork.model.CustomGauge;
+import battlenetwork.model.panel.Panel;
+import battlenetwork.model.utility.Constants;
+import battlenetwork.model.utility.Position;
 
 public class EntityView {
 	private final Entity entity;
