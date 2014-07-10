@@ -25,14 +25,12 @@ public class LavaPanel extends Panel {
 
 	@Override
 	public Panel leavingChange() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Panel enteringChange() {
-		// TODO Auto-generated method stub
-		return null;
+		return new NormalPanel(new Position(0,0),getSide());
 	}
 
 }
