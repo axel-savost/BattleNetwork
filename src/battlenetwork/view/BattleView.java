@@ -18,6 +18,8 @@ import battlenetwork.model.Enemy;
 import battlenetwork.model.Entity;
 import battlenetwork.model.Navi;
 import battlenetwork.model.CustomGauge;
+import battlenetwork.model.panel.CrackedPanel;
+import battlenetwork.model.panel.HolePanel;
 import battlenetwork.model.panel.LavaPanel;
 import battlenetwork.model.panel.Panel;
 import battlenetwork.model.utility.Constants;
@@ -70,6 +72,12 @@ public class BattleView {
 				
 				if (e instanceof LavaPanel){
 					i = new Image(Constants.IMAGE_FOLDER + "panellava.png");
+				}
+				if (e instanceof CrackedPanel){
+					i = new Image(Constants.IMAGE_FOLDER + "panelcracked.png");
+				}
+				if (e instanceof HolePanel){
+					i = new Image(Constants.IMAGE_FOLDER + "panelbroken.png");
 				}
 				
 			

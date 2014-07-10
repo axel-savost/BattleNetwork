@@ -1,8 +1,6 @@
 package battlenetwork.model;
 
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.state.StateBasedGame;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +39,9 @@ public class Field {
 		changePanel(2,2,new LavaPanel(getPosition(2,2),getPanel(2,2).getSide()));
 		changePanel(2,0,new LavaPanel(getPosition(2,0),getPanel(2,0).getSide()));
 		changePanel(0,1,new LavaPanel(getPosition(0,1),getPanel(0,1).getSide()));
+		
+		changePanel(1,0,new CrackedPanel(getPosition(1,0),getPanel(1,0).getSide()));
+		changePanel(1,2,new CrackedPanel(getPosition(1,2),getPanel(1,2).getSide()));
 		
 	}
 	

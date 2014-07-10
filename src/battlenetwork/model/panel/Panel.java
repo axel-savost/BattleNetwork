@@ -16,10 +16,6 @@ public abstract class Panel extends Entity{
 		super(p);
 		this.side = side;
 	}
-	
-	public Panel(Position p){
-		this(p,Side.NEUTRAL);
-	}
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame game, int i) {
