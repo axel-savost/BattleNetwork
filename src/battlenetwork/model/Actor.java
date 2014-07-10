@@ -96,7 +96,7 @@ public abstract class Actor extends Entity implements IControllable{
 	}
 	
 	public void die(){
-		
+		System.out.println(this + " is dead! May he rest in peace.");
 	}
 
 	@Override

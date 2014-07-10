@@ -1,5 +1,7 @@
 package battlenetwork.model.utility;
 
+import java.util.Random;
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 
@@ -36,6 +38,9 @@ public class Constants {
 	public static final int CUSTOM_GAUGE_DEFAULT_FILL_TIME_MS    = 10000;
 	
 	public static final String SHADOW_IMAGE    = IMAGE_FOLDER + "shadows.png";
+	
+	
+	public static final Random RANDOM = new Random();
 	
 	
 	
