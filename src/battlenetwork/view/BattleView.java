@@ -14,6 +14,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import battlenetwork.controller.BattleController;
 import battlenetwork.model.BattleModel;
+import battlenetwork.model.CardRack;
 import battlenetwork.model.Enemy;
 import battlenetwork.model.Entity;
 import battlenetwork.model.Navi;
@@ -98,7 +99,10 @@ public class BattleView {
 			} else if (e instanceof CustomGauge){
 				i = new Image(Constants.IMAGE_FOLDER + "customborder.png");
 				c = Color.white;
-			} else {
+			} else if (e instanceof CardRack){
+				i = new Image(Constants.IMAGE_FOLDER + "customborder.png");
+				c = Color.blue;
+			}  else {
 				i = new Image(Constants.IMAGE_FOLDER + "error.png");
 				c = Color.black;
 			}

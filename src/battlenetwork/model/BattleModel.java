@@ -6,11 +6,13 @@ import java.util.List;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 
+import battlenetwork.model.utility.Constants;
 import battlenetwork.model.utility.Direction;
 import battlenetwork.model.utility.Position;
 import battlenetwork.model.utility.Side;
 import battlenetwork.view.SoundBox;
 
+import battlenetwork.model.card.*;
 import battlenetwork.model.panel.Panel;
 
 public class BattleModel {
@@ -46,8 +48,13 @@ public class BattleModel {
 			}
 		}
 		
-		addEntity(new CustomGauge(new Position(640,64)));
+		addEntity(new CustomGauge(new Position(Constants.GAME_WIDTH/2, 64)));
+		CardRack c = new CardRack(new Position(Constants.GAME_WIDTH/2, Constants.GAME_HEIGHT - 64));
+		c.insertCard(new CannonCard("MegaCannon",180,Element.NORMAL));
+		addEntity(c);
 		
+		
+		//Plays random background music
 		SoundBox.playRandomMusic();
 		
 	}

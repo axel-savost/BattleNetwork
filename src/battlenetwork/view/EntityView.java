@@ -11,6 +11,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 import battlenetwork.model.Actor;
+import battlenetwork.model.CardRack;
 import battlenetwork.model.Entity;
 import battlenetwork.model.CustomGauge;
 import battlenetwork.model.panel.Panel;
@@ -63,7 +64,18 @@ public class EntityView {
 		}
 		g.drawImage(sprite, p.getX(), p.getY(), color);
 		
+		if (entity instanceof CardRack){
+			CardRack rack = (CardRack)entity;
+			g.setColor(Color.blue);
+			g.fillRect(p.getX(),p.getY(),Constants.CUSTOM_GAUGE_W,Constants.CUSTOM_GAUGE_H);
+			g.setColor(Color.yellow);
+			if (!rack.isEmpty()){
+				g.drawString(rack.seeCard().getName(),p.getX(),p.getY());
+			}
+		}
 		
+		
+		//Draw Hitpoints for Actors
 		if (entity instanceof Actor){
 			g.setColor(Color.yellow);
 			g.drawString("" + ((Actor)entity).getHp(), entity.getPosition().getX(), entity.getPosition().getY());
