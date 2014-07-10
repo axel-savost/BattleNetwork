@@ -9,6 +9,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import battlenetwork.model.utility.Direction;
 import battlenetwork.model.utility.Position;
 import battlenetwork.model.utility.Side;
+import battlenetwork.view.SoundBox;
 
 import battlenetwork.model.panel.Panel;
 
@@ -44,6 +45,8 @@ public class BattleModel {
 		}
 		
 		addEntity(new CustomGauge(new Position(640,64)));
+		
+		SoundBox.playRandomMusic();
 		
 	}
 	
