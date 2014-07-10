@@ -1,4 +1,4 @@
-package battlenetwork.model;
+package battlenetwork.model.utility;
 
 public enum Side {
 	LEFT, RIGHT, NEUTRAL;

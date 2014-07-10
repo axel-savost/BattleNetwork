@@ -3,7 +3,7 @@ package battlenetwork.controller;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.SlickException;
 
-import battlenetwork.model.Constants;
+import battlenetwork.model.utility.Constants;
 
 
 public class Main {

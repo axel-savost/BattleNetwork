@@ -3,6 +3,8 @@ package battlenetwork.model;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 
+import battlenetwork.model.utility.Position;
+
 public abstract class Entity {
 	private Position position;
 	

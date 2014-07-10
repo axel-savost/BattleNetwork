@@ -14,12 +14,13 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import battlenetwork.controller.BattleController;
 import battlenetwork.model.BattleModel;
-import battlenetwork.model.Constants;
 import battlenetwork.model.Enemy;
 import battlenetwork.model.Entity;
 import battlenetwork.model.Navi;
-import battlenetwork.model.Panel;
 import battlenetwork.model.CustomGauge;
+import battlenetwork.model.panel.LavaPanel;
+import battlenetwork.model.panel.Panel;
+import battlenetwork.model.utility.Constants;
 
 public class BattleView {
 	
@@ -65,21 +66,13 @@ public class BattleView {
 				c = Color.blue;
 			} else if (e instanceof Panel){
 				//Choose sprite after panel type
-				switch(((Panel)e).getType()){
-					case NORMAL:
-						i = new Image(Constants.IMAGE_FOLDER + "panel.png");
-						break;
-					case CRACKED:
-						i = new Image(Constants.IMAGE_FOLDER + "panelcracked.png");
-						break;
-					case BROKEN:
-						i = new Image(Constants.IMAGE_FOLDER + "panelbroken.png");
-						break;
-					default:
-						i = new Image(Constants.IMAGE_FOLDER + "panel.png");
-						break;
+				i = new Image(Constants.IMAGE_FOLDER + "panel.png");
+				
+				if (e instanceof LavaPanel){
+					i = new Image(Constants.IMAGE_FOLDER + "panellava.png");
 				}
 				
+			
 				//Choose colour after panel side
 				switch (((Panel)e).getSide()){
 				case LEFT:

@@ -1,6 +1,6 @@
 package battlenetwork.model;
 
-public class Card {
+public abstract class Card {
 	private String name;
 	private int power;
 	private Element element;

@@ -8,7 +8,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import battlenetwork.model.BattleModel;
-import battlenetwork.model.Constants;
+import battlenetwork.model.utility.Constants;
 import battlenetwork.view.BattleView;
 
 public class BattleState extends BasicGameState{

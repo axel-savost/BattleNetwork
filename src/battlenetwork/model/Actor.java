@@ -4,6 +4,10 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 
 import battlenetwork.model.BattleModel.Key;
+import battlenetwork.model.utility.Constants;
+import battlenetwork.model.utility.Direction;
+import battlenetwork.model.utility.Position;
+import battlenetwork.model.utility.Side;
 
 /**
  * An actor is acting in battle. This means it's on the battlefield and can be affected by other actors.

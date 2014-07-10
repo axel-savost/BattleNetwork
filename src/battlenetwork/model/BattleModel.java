@@ -6,6 +6,10 @@ import java.util.List;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 
+import battlenetwork.model.utility.Direction;
+import battlenetwork.model.utility.Position;
+import battlenetwork.model.utility.Side;
+
 public class BattleModel {
 	
 	private List<Entity> entities;

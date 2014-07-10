@@ -3,6 +3,9 @@ package battlenetwork.model;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 
+import battlenetwork.model.utility.Constants;
+import battlenetwork.model.utility.Position;
+
 public class CustomGauge extends Entity {
 	private double fullness=0;
 	
@@ -17,7 +20,7 @@ public class CustomGauge extends Entity {
 	@Override
 	public void update(GameContainer gc, StateBasedGame game, int i) {
 		if (fullness<Constants.CUSTOM_GAUGE_MAX_FULLNESS) {
-			fullness=fullness+i*(double)Constants.CUSTOM_GAUGE_MAX_FULLNESS/Constants.CUSTOM_GAUGE_DEFAULT_FILL_TIME_MS;
+			fullness += i*(double)Constants.CUSTOM_GAUGE_MAX_FULLNESS/Constants.CUSTOM_GAUGE_DEFAULT_FILL_TIME_MS;
 			if (fullness>Constants.CUSTOM_GAUGE_MAX_FULLNESS){
 				fullness=Constants.CUSTOM_GAUGE_MAX_FULLNESS;
 			}
