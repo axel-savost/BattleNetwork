@@ -2,6 +2,9 @@ package battlenetwork.model;
 
 
 
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.state.StateBasedGame;
+
 import battlenetwork.model.BattleModel.Key;
 import battlenetwork.model.utility.Constants;
 import battlenetwork.model.utility.Direction;
@@ -10,6 +13,11 @@ import battlenetwork.model.utility.Side;
 
 public class Navi extends Actor implements IControllable{
 	private final int playerID;
+	private int shootDelay = 0;
+	
+	private int charge = 0;
+	private BusterStatus busterStatus = BusterStatus.READY;
+	
 
 	public Navi(Position p, int playerID) {
 		super(p);
@@ -19,6 +27,31 @@ public class Navi extends Actor implements IControllable{
 	
 	public Navi(Position p){
 		this(p,0);
+	}
+	
+	/**
+	 * This enum represents the buster status
+	 * Ready: Buster is not used and is ready to be fired
+	 * Charging: Buster is now charging up
+	 * Firing: Buster is firing a bullet and is busy
+	 * @author frax
+	 *
+	 */
+	public enum BusterStatus{
+		READY, CHARGING, FIRING;
+		
+		public BusterStatus next(){
+			switch(this){
+			case CHARGING:
+				return FIRING;
+			case FIRING:
+				return READY;
+			case READY:
+				return CHARGING;
+			default:
+				return READY;
+			}
+		}
 	}
 
 	public int getPlayerID() {
@@ -56,7 +89,9 @@ public class Navi extends Actor implements IControllable{
 			
 			break;
 		case SECONDARY:
-			
+			if (busterStatus == BusterStatus.READY){
+				busterStatus = BusterStatus.CHARGING;
+			}
 			break;
 		default:
 			break;
@@ -66,9 +101,53 @@ public class Navi extends Actor implements IControllable{
 
 	@Override
 	public void releaseKey(Key key) {
-		// TODO Auto-generated method stub
+		switch(key){
+		case UP:
+			break;
+		case DOWN:
+			break;
+		case LEFT:
+			break;
+		case RIGHT:
+			break;
+		case PRIMARY:
+			break;
+		case SECONDARY:
+			if (shootDelay <= 0){
+				shootDelay = 500;
+				shoot(charge);
+			}
+			break;
+		default:
+			break;
+		}
 		
 	}
 	
-
+	public void shoot(int power){
+		busterStatus = BusterStatus.FIRING;
+		shootDelay = 500;
+		if (power >= Constants.CHARGE_TIME){
+			//POWERSHOT
+		} else {
+			//NORMALSHOT
+		}
+	}
+	
+	public int getCharge(){
+		return charge;
+	}
+	
+	@Override
+	public void update(GameContainer gc, StateBasedGame game, int i) {
+		super.update(gc, game, i);
+	
+		if (shootDelay > 0){
+			shootDelay -= i;
+			if (shootDelay <= 0){
+				shootDelay = 0;
+				busterStatus = BusterStatus.READY;
+			}
+		}
+	}
 }

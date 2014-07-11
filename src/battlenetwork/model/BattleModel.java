@@ -50,7 +50,7 @@ public class BattleModel {
 		
 		addEntity(new CustomGauge(new Position(Constants.GAME_WIDTH/2, 64)));
 		CardRack c = new CardRack(new Position(Constants.GAME_WIDTH/2, Constants.GAME_HEIGHT - 64));
-		c.insertCard(new CannonCard("MegaCannon",180,Element.NORMAL));
+		c.insertCard(new CannonCard());
 		addEntity(c);
 		
 		

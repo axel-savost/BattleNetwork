@@ -17,6 +17,10 @@ public class Constants {
 	public static final int PANEL_H     = 64;
 	
 	public static final int MOVE_DELAY  = 100;
+	public static final int CHARGE_TIME = 1000;
+	
+	//Milliseconds for a MegaBuster shot to travel one panel forward
+	public static final int BULLET_SPEED= 100;
 	
 	public static final int LAVA_PANEL_DAMAGE = 50;
 	
