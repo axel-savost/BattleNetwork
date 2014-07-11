@@ -15,7 +15,7 @@ import battlenetwork.view.SoundBox;
  * 
  * @author Axel
  */
-public abstract class Actor extends Entity implements IControllable{
+public abstract class Actor extends Entity {
 	private int hp;
 	private Direction heading;
 	private int moveDelay = 0;
@@ -30,50 +30,7 @@ public abstract class Actor extends Entity implements IControllable{
 		hp = 200;
 	}
 
-	@Override
-	public void pressKey(Key key) {
-		switch(key){
-		case UP:
-			if (heading == Direction.NONE && moveDelay <= 0){
-				heading = Direction.UP;
-				moveDelay = Constants.MOVE_DELAY;
-			}
-			break;
-		case DOWN:
-			if (heading == Direction.NONE && moveDelay <= 0){
-				heading = Direction.DOWN;
-				moveDelay = Constants.MOVE_DELAY;
-			}
-			break;
-		case LEFT:
-			if (heading == Direction.NONE && moveDelay <= 0){
-				heading = Direction.LEFT;
-				moveDelay = Constants.MOVE_DELAY;
-			}
-			break;
-		case RIGHT:
-			if (heading == Direction.NONE && moveDelay <= 0){
-				heading = Direction.RIGHT;
-				moveDelay = Constants.MOVE_DELAY;
-			}
-			break;
-		case PRIMARY:
-			
-			break;
-		case SECONDARY:
-			
-			break;
-		default:
-			break;
-		}
-		
-	}
 
-	@Override
-	public void releaseKey(Key key) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	public int getHp() {
 		return hp;
@@ -96,13 +53,12 @@ public abstract class Actor extends Entity implements IControllable{
 	}
 	
 	public void die(){
-		System.out.println(this + " is dead! May he rest in peace.");
+		System.out.println(this + " is dead! May he/she/it rest in peace.");
 	}
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame game, int i) {
 		if (moveDelay > 0){
-			System.out.println("Wait for " + moveDelay + " ms. Then move.");
 			moveDelay=moveDelay-i;
 		}
 		
@@ -114,6 +70,10 @@ public abstract class Actor extends Entity implements IControllable{
 	
 	public void setHeading(Direction d) {
 		heading = d;
+	}
+	
+	public void setMoveDelay(int i) {
+		moveDelay=i;
 	}
 	
 	public boolean readyToMove(){
