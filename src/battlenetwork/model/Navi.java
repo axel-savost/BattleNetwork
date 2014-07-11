@@ -10,6 +10,7 @@ import battlenetwork.model.utility.Constants;
 import battlenetwork.model.utility.Direction;
 import battlenetwork.model.utility.Position;
 import battlenetwork.model.utility.Side;
+import battlenetwork.view.SoundBox;
 
 public class Navi extends Actor implements IControllable{
 	private final int playerID;
@@ -91,6 +92,7 @@ public class Navi extends Actor implements IControllable{
 		case SECONDARY:
 			if (busterStatus == BusterStatus.READY){
 				busterStatus = BusterStatus.CHARGING;
+				SoundBox.play("charging.ogg");
 			}
 			break;
 		default:
@@ -126,11 +128,13 @@ public class Navi extends Actor implements IControllable{
 	
 	public void shoot(int power){
 		busterStatus = BusterStatus.FIRING;
+		charge = 0;
 		shootDelay = 500;
+		
 		if (power >= Constants.CHARGE_TIME){
-			//POWERSHOT
+			SoundBox.play("powershot.ogg");
 		} else {
-			//NORMALSHOT
+			SoundBox.play("shoot.ogg");
 		}
 	}
 	
@@ -145,6 +149,10 @@ public class Navi extends Actor implements IControllable{
 	@Override
 	public void update(GameContainer gc, StateBasedGame game, int i) {
 		super.update(gc, game, i);
+		
+		if (busterStatus == BusterStatus.CHARGING){
+			charge += i;
+		}
 	
 		if (shootDelay > 0){
 			shootDelay -= i;

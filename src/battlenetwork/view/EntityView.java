@@ -99,7 +99,7 @@ public class EntityView {
 		
 		if (entity instanceof Navi){
 			g.setColor(Color.yellow);
-			g.drawString("" + ((Navi)entity).getBusterStatus(), entity.getPosition().getX(), entity.getPosition().getY() + 16);
+			g.drawString(((Navi)entity).getCharge() + " " + ((Navi)entity).getBusterStatus(), entity.getPosition().getX() - 16, entity.getPosition().getY() + 16);
 		}
 		
 		
