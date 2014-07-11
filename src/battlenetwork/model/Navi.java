@@ -1,12 +1,8 @@
 package battlenetwork.model;
 
-import java.util.Queue;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.state.StateBasedGame;
 
 import battlenetwork.model.BattleModel.Key;
-import battlenetwork.model.card.Card;
 import battlenetwork.model.utility.Constants;
 import battlenetwork.model.utility.Direction;
 import battlenetwork.model.utility.Position;
