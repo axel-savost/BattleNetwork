@@ -74,10 +74,18 @@ public class Field {
 		return getPanel(x,y).getPosition();
 	}
 	
-	public boolean accessAllowed(int x, int y, Side side){
+	public boolean accessAllowed(int x, int y, Actor actor){
 		Panel panel = getPanel(x,y);
-		if (panel == null || panel.getSide() != side || getActor(x,y) != null){
+		if (panel == null || panel.getSide() != actor.getSide() || getActor(x,y) != null){
 			//Access denied if the panel doesn't exist, if the panel's owner doesn't match or if there's an actor on it.			
+			
+			if (panel == null){
+				System.out.println("Access to x="+x+" y="+y+" denied for " + actor + " because panel doesn't exist.");
+			} else if (panel.getSide() != actor.getSide()){
+				System.out.println("Access to x="+x+" y="+y+" denied for " + actor + " because panel belongs to other team.");
+			} else if (getActor(x,y) != null){
+				System.out.println("Access to x="+x+" y="+y+" denied for " + actor + " because "+getActor(x,y)+" is in the way.");
+			}
 			return false;
 		} else {
 			return true;
@@ -86,7 +94,7 @@ public class Field {
 	
 	public void move(Actor a, Direction d){
 		int[] coords = findActor(a);
-		if (coords != null && accessAllowed(coords[0] + d.getX(), coords[1] + d.getY(), a.getSide())){
+		if (coords != null && accessAllowed(coords[0] + d.getX(), coords[1] + d.getY(), a)){
 			leaveCell(coords[0], coords[1]);
 			enterCell(coords[0] + d.getX(), coords[1] + d.getY(), a);
 			a.setPosition(this.getPosition(coords[0] + d.getX(), coords[1] + d.getY()));

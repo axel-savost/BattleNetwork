@@ -18,14 +18,14 @@ import battlenetwork.model.panel.Panel;
 public class BattleModel {
 	
 	private List<Entity> entities;
-	private List<Actor> players;
+	private List<Navi> players;
 	private Field battleField;
 	
 	private Side winner = Side.NEUTRAL;
 
 	public BattleModel(){
 		entities    = new ArrayList<Entity>();
-		players    = new ArrayList<Actor>();
+		players    = new ArrayList<Navi>();
 		battleField = new Field(new Position(256,256));
 		/*
 		//Add panels
@@ -117,22 +117,17 @@ public class BattleModel {
 	
 	public void update(GameContainer gc, StateBasedGame game, int i) {
 		
-		for (Actor p: players){
-			if (p instanceof Navi){
-				Navi n = (Navi)p;
-				if (n.getHeading() != Direction.NONE && n.readyToMove()){
-					System.out.println("Moving");
-					int[] pair = battleField.findActor(p);
-					pair[0]=pair[0]+n.getHeading().getX();
-					pair[1]=pair[1]+n.getHeading().getY();
+		for (Actor a:battleField.getActorList()){
+				if (a.getHeading() != Direction.NONE && a.readyToMove()){
+					int[] pair = battleField.findActor(a);
+					pair[0]=pair[0]+a.getHeading().getX();
+					pair[1]=pair[1]+a.getHeading().getY();
 					
-					if (pair != null && battleField.accessAllowed(pair[0], pair[1], Side.LEFT)){
-						battleField.move(p, p.getHeading());
+					if (pair != null && battleField.accessAllowed(pair[0], pair[1], a)){
+						battleField.move(a, a.getHeading());
 					}
-						n.setHeading(Direction.NONE);
+						a.setHeading(Direction.NONE);
 				}
-				
-			}
 
 		}
 		for (Panel p:battleField.getPanelList()){
