@@ -14,6 +14,8 @@ import battlenetwork.model.Actor;
 import battlenetwork.model.CardRack;
 import battlenetwork.model.Entity;
 import battlenetwork.model.CustomGauge;
+import battlenetwork.model.Navi;
+import battlenetwork.model.Navi.BusterStatus;
 import battlenetwork.model.panel.Panel;
 import battlenetwork.model.utility.Constants;
 import battlenetwork.model.utility.Position;
@@ -47,6 +49,7 @@ public class EntityView {
 			p = convertToBottomCenter(entity.getPosition());
 		}
 		
+		//Draw Shadow
 		if (entity instanceof Actor){
 			try {
 				g.drawImage(new Image(Constants.SHADOW_IMAGE), p.getX(), p.getY() + 80, color);
@@ -62,7 +65,6 @@ public class EntityView {
 			g.setColor(Constants.CUSTOM_GAUGE_FILL_COLOR);
 			g.fillRect(p.getX(),p.getY(),Constants.CUSTOM_GAUGE_W*((CustomGauge)entity).getFullness()/Constants.CUSTOM_GAUGE_MAX_FULLNESS,Constants.CUSTOM_GAUGE_H);
 		}
-		g.drawImage(sprite, p.getX(), p.getY(), color);
 		
 		if (entity instanceof CardRack){
 			CardRack rack = (CardRack)entity;
@@ -74,11 +76,30 @@ public class EntityView {
 			}
 		}
 		
+		//Draw the actual sprite!!!
+		if (entity instanceof Navi && ((Navi)entity).getBusterStatus() == BusterStatus.FIRING){
+			try {
+				g.drawImage(new Image(Constants.IMAGE_FOLDER + "fighterfiring.png"), p.getX(), p.getY(), color);
+			} catch (SlickException e) {
+				e.printStackTrace();
+				System.exit(1);
+			}
+		} else {
+			g.drawImage(sprite, p.getX(), p.getY(), color);
+		}
+		
+		//End of draw sprite
+		
 		
 		//Draw Hitpoints for Actors
 		if (entity instanceof Actor){
 			g.setColor(Color.yellow);
 			g.drawString("" + ((Actor)entity).getHp(), entity.getPosition().getX(), entity.getPosition().getY());
+		}
+		
+		if (entity instanceof Navi){
+			g.setColor(Color.yellow);
+			g.drawString("" + ((Navi)entity).getBusterStatus(), entity.getPosition().getX(), entity.getPosition().getY() + 16);
 		}
 		
 		

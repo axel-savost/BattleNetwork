@@ -138,6 +138,10 @@ public class Navi extends Actor implements IControllable{
 		return charge;
 	}
 	
+	public BusterStatus getBusterStatus(){
+		return busterStatus;
+	}
+	
 	@Override
 	public void update(GameContainer gc, StateBasedGame game, int i) {
 		super.update(gc, game, i);
