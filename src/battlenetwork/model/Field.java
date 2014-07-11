@@ -32,7 +32,7 @@ public class Field {
 		
 		//Player and an enemy
 		actorGrid[1][1]=new Navi(getPosition(1, 1));
-		actorGrid[4][1]=new Enemy(getPosition(4, 1));
+		actorGrid[4][1]=new Mettaur(getPosition(4, 1));
 		
 		//TODO TEMP
 		changePanel(2,1,new LavaPanel(getPosition(2,1),getPanel(2,1).getSide()));
@@ -79,13 +79,15 @@ public class Field {
 		if (panel == null || panel.getSide() != actor.getSide() || getActor(x,y) != null){
 			//Access denied if the panel doesn't exist, if the panel's owner doesn't match or if there's an actor on it.			
 			
-			if (panel == null){
+			//Debug code
+			/*if (panel == null){
 				System.out.println("Access to x="+x+" y="+y+" denied for " + actor + " because panel doesn't exist.");
 			} else if (panel.getSide() != actor.getSide()){
 				System.out.println("Access to x="+x+" y="+y+" denied for " + actor + " because panel belongs to other team.");
 			} else if (getActor(x,y) != null){
 				System.out.println("Access to x="+x+" y="+y+" denied for " + actor + " because "+getActor(x,y)+" is in the way.");
-			}
+			}*/
+			
 			return false;
 		} else {
 			return true;
