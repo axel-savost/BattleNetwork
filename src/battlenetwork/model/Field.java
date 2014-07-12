@@ -8,7 +8,7 @@ import java.util.List;
 import battlenetwork.model.panel.*;
 import battlenetwork.model.utility.*;
 
-public class Field {
+public class Field implements IReadField {
 
 	private Panel[][] panelGrid = new Panel[Constants.TILES_H*2][Constants.TILES_V];
 	private Actor[][] actorGrid = new Actor[Constants.TILES_H*2][Constants.TILES_V];
