@@ -103,9 +103,9 @@ public class EntityView {
 		}
 		
 		
-		//TODO Don't draw test rectangle
-		g.setColor(Color.red);
-		g.drawRect(entity.getPosition().getX() - 2, entity.getPosition().getY() - 2, 4, 4);
+		//Uncomment this to draw a square around every entity's position (0,0)
+		//g.setColor(Color.red);
+		//g.drawRect(entity.getPosition().getX() - 2, entity.getPosition().getY() - 2, 4, 4);
 		
 	}
 	

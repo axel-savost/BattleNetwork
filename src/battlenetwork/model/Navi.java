@@ -115,7 +115,7 @@ public class Navi extends Actor implements IControllable{
 		case PRIMARY:
 			break;
 		case SECONDARY:
-			if (shootDelay <= 0){
+			if (shootDelay <= 0 && busterStatus == BusterStatus.CHARGING){
 				shootDelay = 500;
 				shoot(charge);
 			}
