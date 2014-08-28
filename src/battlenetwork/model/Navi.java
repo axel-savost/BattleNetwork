@@ -6,6 +6,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 
 import battlenetwork.model.BattleModel.Key;
+import battlenetwork.model.projectile.BusterShot;
 import battlenetwork.model.utility.Constants;
 import battlenetwork.model.utility.Direction;
 import battlenetwork.model.utility.Position;
@@ -15,15 +16,18 @@ import battlenetwork.view.SoundBox;
 public class Navi extends Actor implements IControllable{
 	private final int playerID;
 	private int shootDelay = 0;
+	private int attack;
 	
 	private int charge = 0;
 	private BusterStatus busterStatus = BusterStatus.READY;
+	
 	
 
 	public Navi(Position p, int playerID) {
 		super(p);
 		this.playerID = playerID;
 		this.setSide(Side.LEFT);
+		this.attack = 1;
 	}
 	
 	public Navi(Position p){
@@ -131,10 +135,14 @@ public class Navi extends Actor implements IControllable{
 		charge = 0;
 		shootDelay = 500;
 		
+		BusterShot shot;
+		
 		if (power >= Constants.CHARGE_TIME){
 			SoundBox.play("powershot.ogg");
+			shot = new BusterShot(this.getPosition(), attack * Constants.CHARGE_MULTIPLIER);
 		} else {
 			SoundBox.play("shoot.ogg");
+			shot = new BusterShot(this.getPosition(), attack);
 		}
 	}
 	

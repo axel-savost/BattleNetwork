@@ -9,7 +9,7 @@ import battlenetwork.model.utility.Constants;
 public class Main {
 	public static void main(String[] args) {
 		try {
-            AppGameContainer container = new AppGameContainer(new BattleNetworkGame("Battle Time!"));
+            AppGameContainer container = new AppGameContainer(new BattleNetworkGame("Battle Network!"));
             container.setDisplayMode(Constants.GAME_WIDTH, Constants.GAME_HEIGHT, false);
             container.setTargetFrameRate(Constants.FRAMERATE);
             container.start();
