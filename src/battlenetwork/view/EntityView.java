@@ -97,6 +97,12 @@ public class EntityView {
 			g.drawString("" + ((Actor)entity).getHp(), entity.getPosition().getX(), entity.getPosition().getY());
 		}
 		
+		//Draw Hitpoints for Actors
+		if (entity instanceof Actor){
+			g.setColor(Color.yellow);
+			g.drawString("" + ((Actor)entity).getMoveDelay(), entity.getPosition().getX(), entity.getPosition().getY() - 64);
+		}
+		
 		if (entity instanceof Navi){
 			g.setColor(Color.yellow);
 			g.drawString(((Navi)entity).getCharge() + " " + ((Navi)entity).getBusterStatus(), entity.getPosition().getX() - 16, entity.getPosition().getY() + 16);

@@ -35,13 +35,18 @@ public class Field implements IReadField {
 		actorGrid[4][1]=new Mettaur(getPosition(4, 1));
 		
 		//TODO TEMP
-		changePanel(2,1,new LavaPanel(getPosition(2,1),getPanel(2,1).getSide()));
-		changePanel(2,2,new LavaPanel(getPosition(2,2),getPanel(2,2).getSide()));
 		changePanel(2,0,new LavaPanel(getPosition(2,0),getPanel(2,0).getSide()));
-		changePanel(0,1,new LavaPanel(getPosition(0,1),getPanel(0,1).getSide()));
+		changePanel(2,1,new LavaPanel(getPosition(2,1),getPanel(2,1).getSide()));
+		changePanel(2,2,new LavaPanel(getPosition(2,2),getPanel(2,2).getSide()));		
 		
-		changePanel(1,0,new CrackedPanel(getPosition(1,0),getPanel(1,0).getSide()));
-		changePanel(1,2,new CrackedPanel(getPosition(1,2),getPanel(1,2).getSide()));
+		changePanel(1,0,new WaterPanel(getPosition(1,0),getPanel(1,0).getSide()));
+		changePanel(1,1,new WaterPanel(getPosition(1,1),getPanel(1,1).getSide()));
+		changePanel(1,2,new WaterPanel(getPosition(1,2),getPanel(1,2).getSide()));
+		
+		changePanel(0,0,new CrackedPanel(getPosition(0,0),getPanel(0,0).getSide()));
+		changePanel(0,1,new CrackedPanel(getPosition(0,1),getPanel(0,1).getSide()));
+		changePanel(0,2,new CrackedPanel(getPosition(0,2),getPanel(0,2).getSide()));
+		
 		
 	}
 	

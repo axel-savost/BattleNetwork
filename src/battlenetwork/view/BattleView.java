@@ -23,6 +23,7 @@ import battlenetwork.model.panel.CrackedPanel;
 import battlenetwork.model.panel.HolePanel;
 import battlenetwork.model.panel.LavaPanel;
 import battlenetwork.model.panel.Panel;
+import battlenetwork.model.panel.WaterPanel;
 import battlenetwork.model.utility.Constants;
 
 public class BattleView {
@@ -73,6 +74,9 @@ public class BattleView {
 				
 				if (e instanceof LavaPanel){
 					i = new Image(Constants.IMAGE_FOLDER + "panellava.png");
+				}
+				if (e instanceof WaterPanel){
+					i = new Image(Constants.IMAGE_FOLDER + "panelwater.png");
 				}
 				if (e instanceof CrackedPanel){
 					i = new Image(Constants.IMAGE_FOLDER + "panelcracked.png");

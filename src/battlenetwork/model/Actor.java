@@ -19,6 +19,7 @@ public abstract class Actor extends Entity {
 	private int hp;
 	private Direction heading;
 	private int moveDelay = 0;
+	private double damageMultiplier = 1; //Default 1. 0.5 if on holy panel.
 	private Side side;
 	
 	public Actor(Position p){
@@ -30,8 +31,6 @@ public abstract class Actor extends Entity {
 		hp = 200;
 	}
 
-
-
 	public int getHp() {
 		return hp;
 	}
@@ -40,8 +39,16 @@ public abstract class Actor extends Entity {
 		this.hp = hp;
 	}
 	
+	public double getDamageMultiplier() {
+		return damageMultiplier;
+	}
+
+	public void setDamageMultiplier(double dm) {
+		this.damageMultiplier = dm;
+	}
+	
 	public void takeDamage(int damage){
-		hp -= damage;
+		hp -= (int)(damage * damageMultiplier);
 		if (hp <= 0){
 			die();
 			SoundBox.play("death");
@@ -74,6 +81,10 @@ public abstract class Actor extends Entity {
 	
 	public void setMoveDelay(int i) {
 		moveDelay=i;
+	}
+	
+	public int getMoveDelay() {
+		return moveDelay;
 	}
 	
 	public boolean readyToMove(){

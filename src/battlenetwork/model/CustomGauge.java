@@ -21,7 +21,7 @@ public class CustomGauge extends Entity {
 	@Override
 	public void update(GameContainer gc, StateBasedGame game, int i) {
 		if (fullness<Constants.CUSTOM_GAUGE_MAX_FULLNESS) {
-			fullness += i*(double)Constants.CUSTOM_GAUGE_MAX_FULLNESS/Constants.CUSTOM_GAUGE_DEFAULT_FILL_TIME_MS;
+			fullness += i*(double)Constants.CUSTOM_GAUGE_MAX_FULLNESS/Constants.CUSTOM_GAUGE_DEFAULT_FILL_TIME;
 			if (fullness>=Constants.CUSTOM_GAUGE_MAX_FULLNESS){
 				fullness=Constants.CUSTOM_GAUGE_MAX_FULLNESS;
 				SoundBox.play("customfull");

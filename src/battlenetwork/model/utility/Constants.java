@@ -30,10 +30,12 @@ public class Constants {
 	public static final int CHARGE_MULTIPLIER  = 10;
 	
 	//Milliseconds for a MegaBuster shot to travel one panel forward
-	public static final int BULLET_SPEED= 100;
+	public static final int BULLET_SPEED= 50;
 	
-	//Damage taken by stepping onto a lava panel.
+	//Damage taken by stepping onto a lava panel
 	public static final int LAVA_PANEL_DAMAGE = 50;
+	//Stun time in milliseconds when stepping onto a water panel
+	public static final int WATER_PANEL_STUN  = 400;
 	
 	//Paths to data folders
 	public static final String DATA_FOLDER  = "data/";
@@ -53,8 +55,8 @@ public class Constants {
 	public static final Color CUSTOM_GAUGE_BACKGROUND_COLOR = new Color(255,64,64);
 	
 	//TODO Anton - Skriv beskrivande text
-	public static final int CUSTOM_GAUGE_MAX_FULLNESS    = 1000;
-	public static final int CUSTOM_GAUGE_DEFAULT_FILL_TIME_MS    = 10000;
+	public static final int CUSTOM_GAUGE_MAX_FULLNESS    		= 1000;
+	public static final int CUSTOM_GAUGE_DEFAULT_FILL_TIME   	= 10000;
 	
 	//Image of the shadow below actors
 	public static final String SHADOW_IMAGE    = IMAGE_FOLDER + "shadows.png";
